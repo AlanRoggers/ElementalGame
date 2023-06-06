@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 2825959705676428632}
   - component: {fileID: 2713077201689657423}
   - component: {fileID: 8676317909204147698}
+  - component: {fileID: -3540288595704559016}
+  - component: {fileID: -5894782418840253104}
+  - component: {fileID: 1526415961359055017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -237,5 +240,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0828facb04a2e74f99dd3729416f912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainFriction: 1
+  weight: 100
+  moveForce: 50
+  friction: 0
+--- !u!114 &-3540288595704559016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017550999096315262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3def7d3303b95b54e9212e05ba6f31c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
+  objectCollTag: 
+  terrain:
+    serializedVersion: 2
+    m_Bits: 8
+  _feetBox: {fileID: 2478808561085501695}
+  _headBox: {fileID: 2825959705676428632}
+  _auxiliar: {x: 0, y: 0.01}
+--- !u!114 &-5894782418840253104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017550999096315262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115ca5e7b654b3444a98c6398824adbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1526415961359055017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017550999096315262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0448a2ceac363499b73c07bf3a9347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

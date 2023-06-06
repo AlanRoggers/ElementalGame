@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 449016456}
   - component: {fileID: 449016455}
   - component: {fileID: 449016460}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NormalFloor
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -9152,7 +9152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friction: 1
---- !u!1001 &792715604
+--- !u!1001 &1472762272
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9160,17 +9160,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 706074653760783408, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 706074653760783408, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
+    - target: {fileID: 2478808561085501695, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5635402
       objectReference: {fileID: 0}
     - target: {fileID: 2478808561085501695, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: m_Offset.x
+      value: -0.000026583672
       objectReference: {fileID: 0}
     - target: {fileID: 4250260060003291262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: m_RootOrder
@@ -9182,7 +9178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250260060003291262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.01
+      value: -3.7371805
       objectReference: {fileID: 0}
     - target: {fileID: 4250260060003291262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9216,13 +9212,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8676317909204147698, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
-      propertyPath: weight
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8676317909204147698, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
-      propertyPath: moveForce
-      value: 50
+    - target: {fileID: 8040037030111909103, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017550999096315262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: m_Name

@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class HorizontalMovement : MonoBehaviour
 {
+    //Variables temporales (Las voy a borrar)
+    public float terrainFriction;
+
     //El valor de moveForce siempre debe ser mayor a cualquier constante de friccion
     [SerializeField] private float weight;
     [SerializeField] private float moveForce; 
-    private float constFriction = 0;
+    [SerializeField] private float friction;
     private float acceleration;
     private Rigidbody2D phys;
     private Vector2 velocity;
-    void Awake(){
+    private CollisionDetector collisionDetector;
+
+    void Awake()
+    {
         phys = GetComponent<Rigidbody2D>();
+        collisionDetector = GetComponent<CollisionDetector>();
     }
+    
     void Start()
     {
         acceleration = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        velocity.y = phys.velocity.y;
         // Deteccion de las teclas de movimiento y validación de ambas teclas presionadas
         int moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
                             (Input.GetKey(KeyCode.D) ? 
@@ -29,25 +38,29 @@ public class HorizontalMovement : MonoBehaviour
                                 -1 : 
                             0)) : 0;
 
+        // Coeficiente de friccion
+        friction = collisionDetector.objectCollTag switch
+        {
+            "Terrain" => terrainFriction,
+            "Air" => 0.5f,
+            _ => 0f,
+        };
+        
         // Se acelera con un tope de velocidad en 10 o -10 (En teoría no debería afectar el sistema de fisicas de unity a 
         // esta parte del movimiento)
-
-        if (moveDetector != 0) {
-            acceleration += (Mathf.Sign(moveDetector) * moveForce - Mathf.Sign(moveDetector) * constFriction) * Time.deltaTime;
+        if (moveDetector != 0 && collisionDetector.onGround) {
+            acceleration += (Mathf.Sign(moveDetector) * moveForce - Mathf.Sign(moveDetector) * friction) * Time.deltaTime;
             acceleration = Mathf.Clamp(acceleration, -10, 10);
-        } else {
-            acceleration += (-1) * Mathf.Sign(acceleration) * constFriction * Time.deltaTime * weight;
-            acceleration = (acceleration > 0.9 ^ acceleration < -0.9) ? acceleration : 0;
+        } else if (acceleration != 0f) {
+            float deceleration = (-1) * Mathf.Sign(acceleration) * friction * Time.deltaTime * weight;
+            acceleration = Mathf.Sign(acceleration) == 1 ? 
+                (acceleration + deceleration > 0.9 ? acceleration + deceleration : 0) : 
+                (acceleration + deceleration < -0.9 ? acceleration + deceleration : 0);
+            // print(deceleration);
         }
-
-        velocity.x = acceleration;  
+        velocity.x = acceleration;
         phys.velocity = velocity;
-        //print(acceleration);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.gameObject.CompareTag("Terrain")) 
-            constFriction = collision.gameObject.GetComponent<PhysicScalars>().friction;
+        // print(acceleration);
     }
 
 }
