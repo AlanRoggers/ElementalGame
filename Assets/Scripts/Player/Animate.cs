@@ -29,6 +29,7 @@ public class Animate : MonoBehaviour
         if (Mathf.Abs(_phys.velocity.x) > 0) {
             _flipX = _phys.velocity.x < 0;
             _anim.SetBool("Move", true);
+            _anim.SetBool("Run", Input.GetKey(KeyCode.LeftShift));
         } else _anim.SetBool("Move", false);
 
         if (_flipX)

@@ -8,59 +8,87 @@ public class HorizontalMovement : MonoBehaviour
     public float terrainFriction;
 
     //El valor de moveForce siempre debe ser mayor a cualquier constante de friccion
-    [SerializeField] private float weight;
-    [SerializeField] private float moveForce; 
-    [SerializeField] private float friction;
-    private float acceleration;
-    private Rigidbody2D phys;
-    private Vector2 velocity;
-    private CollisionDetector collisionDetector;
-
+    [SerializeField] private float _weight;
+    [SerializeField] private float _moveForce; 
+    [SerializeField] private float _friction;
+    private int _moveDetector;
+    private float _maxSpeed;
+    private float _acceleration;
+    private bool _isJumping;
+    private Rigidbody2D _phys;
+    private Vector2 _velocity;
+    private CollisionDetector _collisionDetector;
+    
     void Awake()
     {
-        phys = GetComponent<Rigidbody2D>();
-        collisionDetector = GetComponent<CollisionDetector>();
+        _phys = GetComponent<Rigidbody2D>();
+        _collisionDetector = GetComponent<CollisionDetector>();
     }
     
     void Start()
     {
-        acceleration = 0;
+        _acceleration = 0;
     }
 
-    void FixedUpdate()
-    {
-        velocity.y = phys.velocity.y;
+    void Update(){
+        
         // Deteccion de las teclas de movimiento y validación de ambas teclas presionadas
-        int moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
+        _moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
                             (Input.GetKey(KeyCode.D) ? 
                                 1: 
                             (Input.GetKey(KeyCode.A) ? 
                                 -1 : 
                             0)) : 0;
 
+        // Deteccion de la tecla para correr
+        _maxSpeed = Input.GetKey(KeyCode.LeftShift) ? 15f : 10f;
+
         // Coeficiente de friccion
-        friction = collisionDetector.objectCollTag switch
+        _friction = _collisionDetector.objectCollTag switch
         {
             "Terrain" => terrainFriction,
-            "Air" => 0.5f,
+            "Air" => 0.1f,
             _ => 0f,
         };
-        
+
+        _isJumping = _phys.velocity.y != 0;
+
+    }
+
+    void FixedUpdate()
+    {
+        _velocity.y = _phys.velocity.y;
+        if(_collisionDetector.onGround && _isJumping){
+            _isJumping = false;
+            StartCoroutine(AditionalMoveForce());
+        }
+
+        print("Move force: " + _moveForce);
+
         // Se acelera con un tope de velocidad en 10 o -10 (En teoría no debería afectar el sistema de fisicas de unity a 
         // esta parte del movimiento)
-        if (moveDetector != 0 && collisionDetector.onGround) {
-            acceleration += (Mathf.Sign(moveDetector) * moveForce - Mathf.Sign(moveDetector) * friction) * Time.deltaTime;
-            acceleration = Mathf.Clamp(acceleration, -10, 10);
-        } else if (acceleration != 0f) {
-            float deceleration = (-1) * Mathf.Sign(acceleration) * friction * Time.deltaTime * weight;
-            acceleration = Mathf.Sign(acceleration) == 1 ? 
-                (acceleration + deceleration > 0.9 ? acceleration + deceleration : 0) : 
-                (acceleration + deceleration < -0.9 ? acceleration + deceleration : 0);
+        if (_moveDetector != 0 && _collisionDetector.onGround) {
+            _acceleration += (Mathf.Sign(_moveDetector) * _moveForce - Mathf.Sign(_moveDetector) * _friction) * Time.deltaTime;
+            _acceleration = Mathf.Clamp(_acceleration, -_maxSpeed, _maxSpeed);
+        } else if (_acceleration != 0f) {
+            float deceleration = (-1) * Mathf.Sign(_acceleration) * _friction * Time.deltaTime * _weight;
+            _acceleration = Mathf.Sign(_acceleration) == 1 ? 
+                (_acceleration + deceleration > 0.9 ? _acceleration + deceleration : 0) : 
+                (_acceleration + deceleration < -0.9 ? _acceleration + deceleration : 0);
             // print(deceleration);
         }
-        velocity.x = acceleration;
-        phys.velocity = velocity;
+
+        _velocity.x = _acceleration;
+        _phys.velocity = _velocity;
         // print(acceleration);
+    }
+
+    IEnumerator AditionalMoveForce()
+    {
+        float originalVal = _moveForce;
+        _moveForce *= 2;
+        yield return new WaitForFixedUpdate();
+        _moveForce = originalVal;
     }
 
 }

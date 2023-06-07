@@ -641,7 +641,6 @@ GameObject:
   - component: {fileID: 449016457}
   - component: {fileID: 449016456}
   - component: {fileID: 449016455}
-  - component: {fileID: 449016460}
   m_Layer: 3
   m_Name: NormalFloor
   m_TagString: Terrain
@@ -9139,19 +9138,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &449016460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449016453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2718086da434cc4c9bcd63a9fdf71b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  friction: 1
 --- !u!1001 &1436708627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9207,6 +9193,30 @@ PrefabInstance:
     - target: {fileID: 227159887371476952, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724169646341833462, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734554917681844820, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _weight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734554917681844820, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: runForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734554917681844820, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: walkForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734554917681844820, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _moveForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734554917681844820, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: terrainFriction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4969787527929168600, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
       propertyPath: m_Name

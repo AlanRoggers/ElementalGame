@@ -21,7 +21,7 @@ public class CollisionDetector : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = onGround ? Color.green : Color.red;
         Gizmos.DrawWireCube(_feetBox.bounds.center, _feetBox.size + _auxiliar);
     }
 }
