@@ -7,6 +7,8 @@ public class Animate : MonoBehaviour
     private bool _flipX;
     private Rigidbody2D _phys;
     private Animator _anim;
+    private HorizontalMovement _horiMov;
+    private VerticalMovement _vertMov;
     private Vector3 _left;
     private Vector3 _right;
 
@@ -14,6 +16,8 @@ public class Animate : MonoBehaviour
     {
         _phys = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _horiMov = GetComponent<HorizontalMovement>();
+        _vertMov = GetComponent<VerticalMovement>();
     }
 
 
@@ -26,8 +30,8 @@ public class Animate : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(_phys.velocity.x) > 0) {
-            _flipX = _phys.velocity.x < 0;
+        if (_horiMov.moveDetector != 0) {
+            _flipX = _horiMov.moveDetector != 1;
             _anim.SetBool("Move", true);
             _anim.SetBool("Run", Input.GetKey(KeyCode.LeftShift));
         } else _anim.SetBool("Move", false);

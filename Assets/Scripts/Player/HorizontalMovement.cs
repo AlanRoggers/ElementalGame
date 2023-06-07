@@ -11,7 +11,7 @@ public class HorizontalMovement : MonoBehaviour
     [SerializeField] private float _weight;
     [SerializeField] private float _moveForce; 
     [SerializeField] private float _friction;
-    private int _moveDetector;
+    public int moveDetector;
     private float _maxSpeed;
     private float _acceleration;
     private bool _isJumping;
@@ -33,7 +33,7 @@ public class HorizontalMovement : MonoBehaviour
     void Update(){
         
         // Deteccion de las teclas de movimiento y validación de ambas teclas presionadas
-        _moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
+        moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
                             (Input.GetKey(KeyCode.D) ? 
                                 1: 
                             (Input.GetKey(KeyCode.A) ? 
@@ -51,7 +51,8 @@ public class HorizontalMovement : MonoBehaviour
             _ => 0f,
         };
 
-        _isJumping = _phys.velocity.y != 0;
+        if (!_isJumping)
+            _isJumping = !_collisionDetector.onGround;
 
     }
 
@@ -67,8 +68,8 @@ public class HorizontalMovement : MonoBehaviour
 
         // Se acelera con un tope de velocidad en 10 o -10 (En teoría no debería afectar el sistema de fisicas de unity a 
         // esta parte del movimiento)
-        if (_moveDetector != 0 && _collisionDetector.onGround) {
-            _acceleration += (Mathf.Sign(_moveDetector) * _moveForce - Mathf.Sign(_moveDetector) * _friction) * Time.deltaTime;
+        if (moveDetector != 0 && _collisionDetector.onGround) {
+            _acceleration += (Mathf.Sign(moveDetector) * _moveForce - Mathf.Sign(moveDetector) * _friction) * Time.deltaTime;
             _acceleration = Mathf.Clamp(_acceleration, -_maxSpeed, _maxSpeed);
         } else if (_acceleration != 0f) {
             float deceleration = (-1) * Mathf.Sign(_acceleration) * _friction * Time.deltaTime * _weight;
@@ -86,7 +87,7 @@ public class HorizontalMovement : MonoBehaviour
     IEnumerator AditionalMoveForce()
     {
         float originalVal = _moveForce;
-        _moveForce *= 2;
+        _moveForce *= 4;
         yield return new WaitForFixedUpdate();
         _moveForce = originalVal;
     }

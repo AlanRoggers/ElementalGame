@@ -21,7 +21,9 @@ public class VerticalMovement : MonoBehaviour
     {
         _jumpDetector = _jumpDetector || Input.GetKeyDown(KeyCode.W) && collisionDetector.onGround;
 
-        _phys.gravityScale = !collisionDetector.onGround ? 10f : 0f;
+        _phys.gravityScale = !collisionDetector.onGround ? 10f : 
+            Mathf.Abs(_phys.velocity.y) > 0f ? 1f : 0f;
+
     }
 
     void FixedUpdate(){
