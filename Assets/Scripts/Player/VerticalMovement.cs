@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VerticalMovement : MonoBehaviour
 {
+    public bool jumpDetector;
     [SerializeField] private float _jumpForce;
-    private bool _jumpDetector;
     private Rigidbody2D _phys;
     private CollisionDetector collisionDetector;
     private Vector2 _velocity;
@@ -19,7 +19,7 @@ public class VerticalMovement : MonoBehaviour
 
     void Update()
     {
-        _jumpDetector = _jumpDetector || Input.GetKeyDown(KeyCode.W) && collisionDetector.onGround;
+        jumpDetector = jumpDetector || Input.GetKeyDown(KeyCode.W) && collisionDetector.onGround;
 
         _phys.gravityScale = !collisionDetector.onGround ? 10f : 
             Mathf.Abs(_phys.velocity.y) > 0f ? 1f : 0f;
@@ -33,15 +33,17 @@ public class VerticalMovement : MonoBehaviour
     void FixedUpdate(){
         _velocity.x = _phys.velocity.x;
 
-        if (_jumpDetector){
+        if (jumpDetector){
             _velocity.y = _jumpForce;
             _phys.velocity = _velocity;
             _velocity.y = 0f;
-            _jumpDetector = false;
+            jumpDetector = false;
         } else if (collisionDetector.onGround) {
             _velocity.y = 0;
             _phys.velocity = _velocity;
         }
+
+        
 
     }
 }

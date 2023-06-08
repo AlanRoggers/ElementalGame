@@ -7,15 +7,17 @@ public class Animate : MonoBehaviour
     private bool _flipX;
     private Animator _anim;
     private HorizontalMovement _horiMov;
-    private VerticalMovement _vertMov;
+    private CollisionDetector _collisionDetector;
+    private Rigidbody2D _phys;
     private Vector3 _left;
     private Vector3 _right;
     
     void Awake()
     {
+        _phys = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _horiMov = GetComponent<HorizontalMovement>();
-        _vertMov = GetComponent<VerticalMovement>();
+        _collisionDetector = GetComponent<CollisionDetector>();
     }
 
 
@@ -40,5 +42,15 @@ public class Animate : MonoBehaviour
             transform.localScale = _right;
 
 
+        if (!_collisionDetector.onGround){
+            _anim.SetBool("OnGround", false);
+            if(_phys.velocity.y >= 0)
+                _anim.SetBool("Jump", true);
+            else
+                _anim.SetBool("Jump", false);
+        } else {
+            _anim.SetBool("OnGround", true);
+            _anim.SetBool("Jump", false);
+        }
     }
 }
