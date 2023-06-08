@@ -6,12 +6,12 @@ public class CollisionDetector : MonoBehaviour
 {
     public bool onGround;
     public string objectCollTag;
-    [SerializeField] LayerMask terrain;
+    [SerializeField] private LayerMask terrain;
     [SerializeField] private BoxCollider2D _feetBox;
     [SerializeField] private BoxCollider2D _headBox;
     [SerializeField] private Vector2 _auxiliar;
 
-    // Update is called once per frame
+
     void Update()
     {
         Collider2D floorDetector = Physics2D.OverlapBox(_feetBox.bounds.center, _feetBox.size + _auxiliar, 0f, terrain);

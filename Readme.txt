@@ -13,3 +13,10 @@ Para el caso de la friccion, quiero hacer varios casos:
 
 Movimiento Vertical:
 -Jump Force = 20
+
+Collision Detector
+-Auxiliar en Y = 0.1
+
+Cuando se utilizan TileMaps y se va a realizar los colliders automaticos con Tilemap Collider 2D parece ser que el valor
+por defecto de Offset distance da problemas, lo puse en cero y todo va bien
+

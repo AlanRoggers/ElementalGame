@@ -23,11 +23,16 @@ public class VerticalMovement : MonoBehaviour
 
         _phys.gravityScale = !collisionDetector.onGround ? 10f : 
             Mathf.Abs(_phys.velocity.y) > 0f ? 1f : 0f;
+        
+        if (Input.GetKeyUp(KeyCode.W))
+            _phys.velocity = new Vector2(_phys.velocity.x, _phys.velocity.y / 2f);
+
 
     }
 
     void FixedUpdate(){
         _velocity.x = _phys.velocity.x;
+
         if (_jumpDetector){
             _velocity.y = _jumpForce;
             _phys.velocity = _velocity;
@@ -35,7 +40,8 @@ public class VerticalMovement : MonoBehaviour
             _jumpDetector = false;
         } else if (collisionDetector.onGround) {
             _velocity.y = 0;
-            //_phys.velocity = _velocity;
+            _phys.velocity = _velocity;
         }
+
     }
 }

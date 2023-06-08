@@ -5,16 +5,14 @@ using UnityEngine;
 public class Animate : MonoBehaviour
 {
     private bool _flipX;
-    private Rigidbody2D _phys;
     private Animator _anim;
     private HorizontalMovement _horiMov;
     private VerticalMovement _vertMov;
     private Vector3 _left;
     private Vector3 _right;
-
+    
     void Awake()
     {
-        _phys = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _horiMov = GetComponent<HorizontalMovement>();
         _vertMov = GetComponent<VerticalMovement>();

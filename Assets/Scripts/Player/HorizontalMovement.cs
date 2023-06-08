@@ -30,8 +30,8 @@ public class HorizontalMovement : MonoBehaviour
         _acceleration = 0;
     }
 
-    void Update(){
-        
+    void Update()
+    {
         // Deteccion de las teclas de movimiento y validación de ambas teclas presionadas
         moveDetector =  (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 
                             (Input.GetKey(KeyCode.D) ? 
@@ -47,7 +47,7 @@ public class HorizontalMovement : MonoBehaviour
         _friction = _collisionDetector.objectCollTag switch
         {
             "Terrain" => terrainFriction,
-            "Air" => 0.1f,
+            "Air" => (Input.GetKey(KeyCode.D) ^ Input.GetKey(KeyCode.A)) ? 0.01f : 0.1f,
             _ => 0f,
         };
 
@@ -63,8 +63,6 @@ public class HorizontalMovement : MonoBehaviour
             _isJumping = false;
             StartCoroutine(AditionalMoveForce());
         }
-
-        print("Move force: " + _moveForce);
 
         // Se acelera con un tope de velocidad en 10 o -10 (En teoría no debería afectar el sistema de fisicas de unity a 
         // esta parte del movimiento)
@@ -88,6 +86,7 @@ public class HorizontalMovement : MonoBehaviour
     {
         float originalVal = _moveForce;
         _moveForce *= 4;
+        yield return new WaitForFixedUpdate();
         yield return new WaitForFixedUpdate();
         _moveForce = originalVal;
     }
