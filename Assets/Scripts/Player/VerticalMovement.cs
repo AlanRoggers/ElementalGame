@@ -3,30 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VerticalMovement : MonoBehaviour
-{
+{   
     public bool jumpDetector;
+    public bool doubleJumpDetector;
+    private bool _canDouble;
     [SerializeField] private float _jumpForce;
     private Rigidbody2D _phys;
-    private CollisionDetector collisionDetector;
+    private CollisionDetector _collisionDetector;
     private Vector2 _velocity;
 
     void Awake()
     {
+        jumpDetector = false;
+        doubleJumpDetector = false;
         _phys = GetComponent<Rigidbody2D>();
-        collisionDetector = GetComponent<CollisionDetector>();
+        _canDouble = true;
+        _collisionDetector = GetComponent<CollisionDetector>();
     }
 
 
     void Update()
     {
-        jumpDetector = jumpDetector || Input.GetKeyDown(KeyCode.W) && collisionDetector.onGround;
+        jumpDetector = jumpDetector || Input.GetKeyDown(KeyCode.W) && _collisionDetector.onGround;
 
-        _phys.gravityScale = !collisionDetector.onGround ? 10f : 
+        doubleJumpDetector = Input.GetKeyDown(KeyCode.W) && !_collisionDetector.onGround && _canDouble;
+
+        _phys.gravityScale = !_collisionDetector.onGround ? 10f : 
             Mathf.Abs(_phys.velocity.y) > 0f ? 1f : 0f;
         
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) && _phys.velocity.y > 0)
             _phys.velocity = new Vector2(_phys.velocity.x, _phys.velocity.y / 2f);
 
+        if (_collisionDetector.onGround)
+            _canDouble = true;
+
+        if(doubleJumpDetector){
+            _canDouble = false;
+            _velocity.y = _jumpForce - 5f;
+            _phys.velocity = _velocity;
+            _velocity.y = 0f;
+        }
 
     }
 
@@ -38,12 +54,10 @@ public class VerticalMovement : MonoBehaviour
             _phys.velocity = _velocity;
             _velocity.y = 0f;
             jumpDetector = false;
-        } else if (collisionDetector.onGround) {
+        } else if (_collisionDetector.onGround) {
             _velocity.y = 0;
             _phys.velocity = _velocity;
         }
-
-        
 
     }
 }

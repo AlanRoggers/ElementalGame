@@ -9138,6 +9138,16 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!4 &815354423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5764133896049854662, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+  m_PrefabInstance: {fileID: 1436708627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &815354424 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7238308579977185252, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+  m_PrefabInstance: {fileID: 1436708627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1436708627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9202,6 +9212,82 @@ PrefabInstance:
       propertyPath: _jumpForce
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2368141255179777296, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.timeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.startFrame.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.frameOverTime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -1632444864, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 169739119, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 626261029, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: -684726117, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[4].sprite
+      value: 
+      objectReference: {fileID: 1517160776, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 2473678094438281414, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[5].sprite
+      value: 
+      objectReference: {fileID: -1590677075, guid: 1d8c1d9094098e04499e44799d3324f5, type: 3}
+    - target: {fileID: 3238675878929151759, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _particleAnim
+      value: 
+      objectReference: {fileID: 815354424}
+    - target: {fileID: 3238675878929151759, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _walkingPos.x
+      value: -0.522
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238675878929151759, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _walkingPos.y
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238675878929151759, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: _particleTrans
+      value: 
+      objectReference: {fileID: 815354423}
     - target: {fileID: 3463416133660035990, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
       propertyPath: m_Material
       value: 
@@ -9242,9 +9328,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Owlet Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 5764133896049854662, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764133896049854662, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.143
+      objectReference: {fileID: 0}
     - target: {fileID: 6219205703777049417, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410923886061501834, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410923886061501834, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8575596892540470782, guid: e1fe8baf24077c340a55daac72ba10aa, type: 3}
       propertyPath: _auxiliar.y
