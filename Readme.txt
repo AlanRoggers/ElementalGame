@@ -15,7 +15,9 @@ Movimiento Vertical:
 -Jump Force = 20
 
 Collision Detector
--Auxiliar en Y = 0.1
+-FeetFix en Y = 0.01
+-KickPosFix X = 0.57 Y = 0.56
+-KickSizeFix X = 0.325 Y = 0.46
 
 Cuando se utilizan TileMaps y se va a realizar los colliders automaticos con Tilemap Collider 2D parece ser que el valor
 por defecto de Offset distance da problemas, lo puse en cero y todo va bien

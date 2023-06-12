@@ -14,6 +14,7 @@ public class Animate : MonoBehaviour
     private Animator _anim;
     private HorizontalMovement _horiMov;
     private VerticalMovement _vertMov;
+    private Attacks _attackInputs;
     private CollisionDetector _collisionDetector;
     private Rigidbody2D _phys;
     private Vector3 _left;
@@ -26,6 +27,7 @@ public class Animate : MonoBehaviour
         _horiMov = GetComponent<HorizontalMovement>();
         _vertMov = GetComponent<VerticalMovement>();
         _collisionDetector = GetComponent<CollisionDetector>();
+        _attackInputs = GetComponent<Attacks>();
     }
 
 
@@ -69,6 +71,7 @@ public class Animate : MonoBehaviour
             }
 
             _anim.SetBool("OnGround", false);
+            
             if(_phys.velocity.y >= 0)
                 _anim.SetBool("Jump", true);
             else
@@ -77,5 +80,9 @@ public class Animate : MonoBehaviour
             _anim.SetBool("OnGround", true);
             _anim.SetBool("Jump", false);
         }
+
+        if(_attackInputs.attack1)
+            _anim.SetTrigger("Attack1");
+            
     }
 }

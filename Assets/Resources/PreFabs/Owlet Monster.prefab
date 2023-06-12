@@ -114,6 +114,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5894782418840253104, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: _jumpForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -3540288595704559016, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: _feetFix.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -3540288595704559016, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: objectCollTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3540288595704559016, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: _terrain.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1526415961359055017, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: _particleAnim
       value: 
@@ -234,6 +250,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -615380968, guid: 277ecf26ef9f93f48a31cb23fb570fe4, type: 3}
+    - target: {fileID: 8676317909204147698, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: _weight
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676317909204147698, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      propertyPath: _moveForce
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9017550999096315262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       propertyPath: m_Name
       value: Owlet Monster
@@ -244,10 +268,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4250260060003291262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5764133896049854662}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9017550999096315262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3612161516174080568}
   m_SourcePrefab: {fileID: 100100000, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
 --- !u!4 &227159887371476952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4250260060003291262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
   m_PrefabInstance: {fileID: 4169486320654634918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4969787527929168600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9017550999096315262, guid: 787a8a8a3464b9943b2c307da42cfb90, type: 3}
+  m_PrefabInstance: {fileID: 4169486320654634918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3612161516174080568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969787527929168600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee24c6abb5935154f8e09e32304eba85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack1: 0
+  punchBox: {fileID: 0}
