@@ -1,5 +1,5 @@
 Hasta ahora tengo tres "Order in Layer" La primera la uso para las decoraciones, la segunda para el terreno y la tercera para el personaje.
-Nota: La numeración es 0, 1, 2 y mientras mas grande es el número, el dibujo saldrá por encima de los números más bajos.
+Nota: La numeración es 0, 1, 2, 3 y mientras mas grande es el número, el dibujo saldrá por encima de los números más bajos.
 
 Valores para los scripts del jugador:
 
