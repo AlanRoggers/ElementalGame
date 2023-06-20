@@ -15,7 +15,6 @@ public class CollisionDetector : MonoBehaviour
     [SerializeField] private Vector2 _kickPosFix;
     [SerializeField] private Vector2 _kickSizeFix;
 
-
     void Update()
     {
         Collider2D floorDetector = Physics2D.OverlapBox(_feetBox.bounds.center, _feetBox.size + _feetFix, 0f, _terrain);
@@ -29,7 +28,7 @@ public class CollisionDetector : MonoBehaviour
     {
         Gizmos.color = onGround ? Color.green : Color.red;
         Gizmos.DrawWireCube(_feetBox.bounds.center, _feetBox.size + _feetFix);
-        Gizmos.color = Color.yellow;
+        Gizmos.color = kicking ? Color.green : Color.yellow;
         Gizmos.DrawWireCube((Vector2) transform.localPosition + _kickPosFix, _kickSizeFix);
     }
 }

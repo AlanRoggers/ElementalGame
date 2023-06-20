@@ -12,7 +12,7 @@ Para el caso de la friccion, quiero hacer varios casos:
 -Tag = "Ice" la friccion aún no la eh puesto
 
 Movimiento Vertical:
--Jump Force = 20
+-Jump Force = 30
 
 Collision Detector
 -FeetFix en Y = 0.01
